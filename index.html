@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tabella CRUD</title>
+  <link rel="stylesheet" href="./dist/css/master.css">
+</head>
+<body>
+  <div id="root">
+    <h1>tabella dettagli stanze</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>room number</th>
+          <th>details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for='room in rooms'>
+          <td> {{ room.id }}</td>
+          <td> {{ room.room_number }}</td>
+          <td> <button @click='getDetails(room.id)' type="button" name="button">INFO</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 v-if='roomDetail'>dettagli stanza</h2>
+    <div v-if='roomDetail' class="container">
+      <div class="">
+        La stanza ha {{ roomDetail.beds }} letto/i
+      </div>
+      <div class="">
+        Si trova al piano n° {{ roomDetail.floor }}
+      </div>
+      <div class="">
+        Il numero della stanza è {{ roomDetail.room_number }}
+      </div>
+      <div class="">
+        Il codice identificativo della stanza è {{ roomDetail.id }}
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="./dist/js/main.js" charset="utf-8"></script>
+</body>
+</html>
